@@ -2,7 +2,7 @@ import os
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
-
+#this is used for developement only
 #from dotenv import load_dotenv
 #load_dotenv()
 
