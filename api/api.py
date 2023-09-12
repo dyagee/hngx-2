@@ -5,9 +5,9 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 #from fastapi.encoders import jsonable_encoder
-from crud import*
-from docs import (summary,description,title, version,contact,docs)
-from models import ResponseModel
+from api.crud import*
+from api.docs import (summary,description,title, version,contact,docs)
+from api.models import ResponseModel
 
 
 app = FastAPI(title=title,summary=summary,docs_url=docs,version=version,contact=contact,description=description)

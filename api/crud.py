@@ -3,7 +3,7 @@
 #import all the required modules
 
 from markupsafe import escape
-from database import col
+from api.database import col
 import os
 
 #generate random id_hex
