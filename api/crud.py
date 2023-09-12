@@ -4,13 +4,17 @@
 
 from markupsafe import escape
 from database import col
-import uuid
+import os
+
+#generate random id_hex
+def random_hex_string(length=6):
+    return os.urandom(length).hex()
 
 
 # Add a new user into to the database
 def add_user(user_name: str) -> dict:
-    id = uuid.uuid4()
-    id = id.hex
+    id = random_hex_string()
+    
     user_data = {
         "id":id,
         "name":escape(user_name)
