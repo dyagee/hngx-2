@@ -25,13 +25,13 @@ You will be able to:
 
 ## CREATE: Adding a new person.  =>/api
 
-Make a POST request with person's as a parameter, the API auto-generates a unique `uuid` for each new person 
+Make a POST request with person's name as body data, the API auto-generates a unique `uuid` for each new person 
 
 **Usage:** 
 
 ```http
 curl -X 'POST' \
-  'http://127.0.0.1:8000/api' \
+  'https://hngx-2-alpha.vercel.app/api' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -70,7 +70,7 @@ Send a GET request specifying the user `id` in order to fetch the user details
 
 ```http
 curl -X 'GET' \
-  'http://127.0.0.1:8000/api/d13b7e876571' \
+  'https://hngx-2-alpha.vercel.app/api/d13b7e876571' \
   -H 'accept: application/json'
 ```
 
@@ -102,7 +102,7 @@ Create a PUT request to API along with the user's unique `ID` and the `name` to 
 
 ```http
 curl -X 'PUT' \
-  'http://127.0.0.1:8000/api/d13b7e876571' \
+  'https://hngx-2-alpha.vercel.app/api/d13b7e876571' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -137,7 +137,7 @@ Create a DELETE request with the user's `ID` a parameter to permanently delete t
 
 ```http
 curl -X 'DELETE' \
-  'http://127.0.0.1:8000/api/d13b7e876571' \
+  'https://hngx-2-alpha.vercel.app/api/d13b7e876571' \
   -H 'accept: application/json'
 ```
 
@@ -155,6 +155,36 @@ curl -X 'DELETE' \
   "code": 200,
   "message": "user deleted successfully"
 }
+
+
+## Example on Localhost:
+
+You can test the ``API`` endpoints with  ``Postman`` or any similar services; to test it on localhost,
+
+Create a python file name it *test.py* and add the code below
+
+
+```python
+import requests
+import json
+
+url = "https://hngx-2-alpha.vercel.app/api/d13b7e876571"
+
+def formatted_print(obj):
+    text = json.dumps(obj, sort_keys=True, indent=4)
+    print(text)
+
+response = requests.get(f"{url}")
+if response.status_code == 200:
+    print("sucessfully fetched the data")
+    formatted_print(response.json())
+else:
+    print(f"There's a {response.status_code} error with your request")
+  
+```
+Run the test.py file in any code editor of your choice, you should receive the response accordingly.
+
+The above example was done for a GET request, you can carry rest of the operations in a similar fashion.
 
 
 ### **Note:** if the operation was not successful, a corresponding error message would be sent back to the client.
