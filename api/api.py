@@ -23,31 +23,31 @@ def add_user_data(user:User):
     new_user = add_user(person)
     return ResponseModel(new_user, "user added successfully.")
 
-@app.get("/api/{id}", response_description="user data retrieved")
-def get_user_data(id:str):
-    user = retrieve_user(id)
+@app.get("/api/{user_id}", response_description="user data retrieved")
+def get_user_data(user_id:str):
+    user = retrieve_user(user_id)
     if user:
         return ResponseModel(user, "user data retrieved successfully")
     raise HTTPException(status_code=404, detail="User not found")
 
-@app.put("/api/{id}")
-def update_user_data(id: str, new_name: UpdateUser ):
+@app.put("/api/{user_id}")
+def update_user_data(user_id: str, new_name: UpdateUser ):
     update_info = new_name.model_dump(exclude_unset=True)
     update_info =update_info["name"]
-    updated_user =  update_user(id, update_info)
+    updated_user =  update_user(user_id, update_info)
     if updated_user:
         return ResponseModel(
-            "user with ID: {} update is successful".format(id),
+            "user with user_ID: {} update is successful".format(user_id),
             "user name updated successfully",
         )
     raise HTTPException(status_code=404, detail="User not found")
 
-@app.delete("/api/{id}", response_description="user data deleted from the database")
-def delete_user(id: str):
-    deleted_user =  user_delete(id)
+@app.delete("/api/{user_id}", response_description="user data deleted from the database")
+def delete_user(user_id: str):
+    deleted_user =  user_delete(user_id)
     if deleted_user:
         return ResponseModel(
-            "user with ID: {} removed".format(id), "user deleted successfully"
+            "user with user_ID: {} removed".format(user_id), "user deleted successfully"
         )
     raise HTTPException(status_code=404, detail="User not found")
 

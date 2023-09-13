@@ -18,9 +18,9 @@ You will be able to:
 
 
 * **add_user_data(name:str)**
-* **get_user_data(id:str)**
-* **update_user_data(id:str,new_name:str)**
-* **delete_user(id:str)**
+* **get_user_data(user_id:str)**
+* **update_user_data(user_id:str,new_name:str)**
+* **delete_user(user_id:str)**
 
 
 ## CREATE: Adding a new person.  =>/api
