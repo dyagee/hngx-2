@@ -3,7 +3,7 @@ from pydantic import BaseModel, Field
 
 
 class User (BaseModel):
-    name: str = Field(...)
+    name: str 
     
 
     class Config:
@@ -16,13 +16,13 @@ class User (BaseModel):
 
 
 class UpdateUser(BaseModel):
-    name: Optional[str]
+    name: str
     
 
     class Config:
         json_schema_extra = {
             "example": {
-                "edited_name": "John Cruise",
+                "name": "John Cruise Essein",
                 
             }
         }

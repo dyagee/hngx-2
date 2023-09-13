@@ -31,9 +31,12 @@ Make a POST request with person's as a parameter, the API auto-generates a uniqu
 
 ```http
 curl -X 'POST' \
-  'http://127.0.0.1:8000/api?user=Mark%20Essein' \
+  'http://127.0.0.1:8000/api' \
   -H 'accept: application/json' \
-  -d ''
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Mark Essein"
+}'
 ```
 
 | Parameter | Type     | Description                       |
@@ -48,7 +51,7 @@ curl -X 'POST' \
   {
   "data": [
     {
-      "id": "95d3b26f520b40629d09a9b19ef99b1f",
+      "id": "d13b7e876571",
       "name": "Mark Essein"
     }
   ],
@@ -67,7 +70,7 @@ Send a GET request specifying the user `id` in order to fetch the user details
 
 ```http
 curl -X 'GET' \
-  'http://127.0.0.1:8000/api/8e4b6f8c3165416c84732fc5c4aa3520' \
+  'http://127.0.0.1:8000/api/d13b7e876571' \
   -H 'accept: application/json'
 ```
 
@@ -81,7 +84,7 @@ curl -X 'GET' \
 {
   "data": [
     {
-      "id": "8e4b6f8c3165416c84732fc5c4aa3520",
+      "id": "d13b7e876571",
       "name": "Mark Essein"
     }
   ],
@@ -99,8 +102,12 @@ Create a PUT request to API along with the user's unique `ID` and the `name` to 
 
 ```http
 curl -X 'PUT' \
-  'http://127.0.0.1:8000/api/8e4b6f8c3165416c84732fc5c4aa3520?new_name=Mark%20Clerk%20Usenni' \
-  -H 'accept: application/json'
+  'http://127.0.0.1:8000/api/d13b7e876571' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "John Cruise Essein"
+}'
 ```
 
 | Parameter | Type     | Description                       |
@@ -113,7 +120,7 @@ curl -X 'PUT' \
 
 {
   "data": [
-    "user with ID: 8e4b6f8c3165416c84732fc5c4aa3520 update is successful"
+    "user with ID: d13b7e876571 update is successful"
   ],
   "code": 200,
   "message": "user name updated successfully"
@@ -130,7 +137,7 @@ Create a DELETE request with the user's `ID` a parameter to permanently delete t
 
 ```http
 curl -X 'DELETE' \
-  'http://127.0.0.1:8000/api/8e4b6f8c3165416c84732fc5c4aa3520' \
+  'http://127.0.0.1:8000/api/d13b7e876571' \
   -H 'accept: application/json'
 ```
 
@@ -143,7 +150,7 @@ curl -X 'DELETE' \
 
 {
   "data": [
-    "user with ID: 8e4b6f8c3165416c84732fc5c4aa3520 removed"
+    "user with ID: d13b7e876571 removed"
   ],
   "code": 200,
   "message": "user deleted successfully"
