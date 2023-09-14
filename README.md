@@ -37,14 +37,11 @@ You can also check  the  `postman` documentation  [here.](https://documenter.get
 import requests
 import json
 
+url = "https://hngx-2-alpha.vercel.app/api/d13b7e876571"
 
 def formatted_print(obj):
     text = json.dumps(obj, sort_keys=True, indent=4)
     print(text)
-
-city = input("Enter city: ")
-price = input("Enter price: ")
-url = f"https://hngx-2-alpha.vercel.app/api/d13b7e876571"
 
 response = requests.get(f"{url}")
 if response.status_code == 200:
